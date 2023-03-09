@@ -1,0 +1,3 @@
+[submodule "conference-api"]
+	path = conference-api
+	url = https://github.com/Benv547/m2-conference-api.git
