@@ -1,3 +1,6 @@
 [submodule "conference-api"]
 	path = conference-api
 	url = https://github.com/Benv547/m2-conference-api.git
+[submodule "conference-bank"]
+	path = conference-bank
+	url = git@github.com:Benv547/m2-conference-bank.git

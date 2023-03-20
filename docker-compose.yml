@@ -36,6 +36,18 @@ services:
         - keycloak
     networks:
         - conference-net
+  # service name: bank
+  bank:
+    container_name: conference.bank
+    build: ./conference-bank
+    environment:
+        SERVER_PORT: 3001
+    ports:
+        - 3001:3001
+    depends_on:
+        - keycloak
+    networks:
+        - conference-net
   # service name: keycloak
   keycloak:
     container_name: conference.keycloak
