@@ -1,0 +1,880 @@
+{
+	"info": {
+		"_postman_id": "4e0eb209-9774-49cb-9275-2f9437d8e3c0",
+		"name": "Conférence API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Inscription API",
+			"item": [
+				{
+					"name": "(+) Jean Bon",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"jeanbon\",\n    \"emailId\": \"jean@bon.fr\",\n    \"password\": \"jeanbon\",\n    \"firstname\": \"Jean\",\n    \"lastName\": \"Bon\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ConferenceAPI}}/user",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(+) Marc Unbut",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"marcunbut\",\n    \"emailId\": \"marc@unbut.fr\",\n    \"password\": \"marcunbut\",\n    \"firstname\": \"Marc\",\n    \"lastName\": \"Unbut\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ConferenceAPI}}/user",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(+) Admin ( /!\\ )",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"admin\",\n    \"emailId\": \"admin@admin.fr\",\n    \"password\": \"admin\",\n    \"firstname\": \"Admin\",\n    \"lastName\": \"Admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ConferenceAPI}}/user",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Attention, vous devez vous authentifier sur Keycloak et octroyer le role ROLE_ADMIN à cet utilisteur."
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Inscription à la banque",
+			"item": [
+				{
+					"name": "(+) Jean Bon",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"cardNumber_jeanbon\", jsonData.cardNumber);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"Jean\",\n    \"lastname\": \"Bon\",\n    \"email\": \"jean@bon.fr\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BankAPI}}/account",
+							"host": [
+								"{{BankAPI}}"
+							],
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(+) Marc Unbut",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"cardNumber_marcunbut\", jsonData.cardNumber);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"Marc\",\n    \"lastname\": \"Unbut\",\n    \"email\": \"marc@unbut.fr\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BankAPI}}/account",
+							"host": [
+								"{{BankAPI}}"
+							],
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Ajout de fonds",
+			"item": [
+				{
+					"name": "(+100€) Jean Boo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BankAPI}}/account/deposit/{{cardNumber_jeanbon}}/100",
+							"host": [
+								"{{BankAPI}}"
+							],
+							"path": [
+								"account",
+								"deposit",
+								"{{cardNumber_jeanbon}}",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(+100€) Marc Unbut",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BankAPI}}/account/deposit/{{cardNumber_marcunbut}}/100",
+							"host": [
+								"{{BankAPI}}"
+							],
+							"path": [
+								"account",
+								"deposit",
+								"{{cardNumber_marcunbut}}",
+								"100"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Voir les fonds",
+			"item": [
+				{
+					"name": "Jean Bon",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BankAPI}}/account/{{cardNumber_jeanbon}}",
+							"host": [
+								"{{BankAPI}}"
+							],
+							"path": [
+								"account",
+								"{{cardNumber_jeanbon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marc Unbut",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BankAPI}}/account/{{cardNumber_marcunbut}}",
+							"host": [
+								"{{BankAPI}}"
+							],
+							"path": [
+								"account",
+								"{{cardNumber_marcunbut}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Chercher une conférence (noauth)",
+			"item": [
+				{
+					"name": "Contient \"*ML*\" dans le nom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"idConferenceML\", jsonData._embedded.conferenceList[0].id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ConferenceAPI}}/conferences?search=nom==\"*ML*\"",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"conferences"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "nom==\"*ML*\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Présenté par \"Présentateur 1\"",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ConferenceAPI}}/conferences?search=presentateur==\"Présentateur 1\"",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"conferences"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "presentateur==\"Présentateur 1\""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "6. Chercher les sessions (noauth)",
+			"item": [
+				{
+					"name": "Associées à la conférence ML",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"idSessionOneML\", jsonData._embedded.sessionList[0].id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ConferenceAPI}}/conferences/{{idConferenceML}}/sessions",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"conferences",
+								"{{idConferenceML}}",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Récupérer la 1ère session ML (self)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ConferenceAPI}}/conferences/{{idConferenceML}}/sessions/{{idSessionOneML}}",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"conferences",
+								"{{idConferenceML}}",
+								"sessions",
+								"{{idSessionOneML}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "7. Reservation d'une session (auth)",
+			"item": [
+				{
+					"name": "Réserver la session ML",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nbPlaces\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ConferenceAPI}}/conferences/{{idConferenceML}}/sessions/{{idSessionOneML}}/reservation/{{mail_jeanbon}}",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"conferences",
+								"{{idConferenceML}}",
+								"sessions",
+								"{{idSessionOneML}}",
+								"reservation",
+								"{{mail_jeanbon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Annuler la réservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{ConferenceAPI}}/conferences/{{idConferenceML}}/sessions/{{idSessionOneML}}/reservation/{{mail_jeanbon}}/cancel",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"conferences",
+								"{{idConferenceML}}",
+								"sessions",
+								"{{idSessionOneML}}",
+								"reservation",
+								"{{mail_jeanbon}}",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paiement de la réservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardNumber\": \"{{cardNumber_jeanbon}}\",\n    \"cardExpirationDate\": \"01/2025\",\n    \"cardCvv\": \"620\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ConferenceAPI}}/conferences/{{idConferenceML}}/sessions/{{idSessionOneML}}/reservation/{{mail_jeanbon}}/payment",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"conferences",
+								"{{idConferenceML}}",
+								"sessions",
+								"{{idSessionOneML}}",
+								"reservation",
+								"{{mail_jeanbon}}",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Récupérer la réservation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ConferenceAPI}}/conferences/{{idConferenceML}}/sessions/{{idSessionOneML}}/reservation/{{mail_jeanbon}}",
+							"host": [
+								"{{ConferenceAPI}}"
+							],
+							"path": [
+								"conferences",
+								"{{idConferenceML}}",
+								"sessions",
+								"{{idSessionOneML}}",
+								"reservation",
+								"{{mail_jeanbon}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "tokenName",
+						"value": "jean@bon.fr",
+						"type": "string"
+					},
+					{
+						"key": "scope",
+						"value": "openid",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "jeanbon",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "jean@bon.fr",
+						"type": "string"
+					},
+					{
+						"key": "clientId",
+						"value": "{{ClientId}}",
+						"type": "string"
+					},
+					{
+						"key": "accessTokenUrl",
+						"value": "{{KeycloakAPI}}/realms/conference/protocol/openid-connect/token",
+						"type": "string"
+					},
+					{
+						"key": "grant_type",
+						"value": "password_credentials",
+						"type": "string"
+					},
+					{
+						"key": "challengeAlgorithm",
+						"value": "S256",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "queryParams",
+						"type": "string"
+					},
+					{
+						"key": "client_authentication",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "8. Administration (auth)",
+			"item": [
+				{
+					"name": "/ (create a conference)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"L'IA pour les nuls\",\n    \"description\": \"Se former sur l'IA en 50min\",\n    \"presentateur\": \"Frank Eurisk\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/conferences",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"conferences"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "password",
+						"value": "admin",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "admin@admin.fr",
+						"type": "string"
+					},
+					{
+						"key": "tokenName",
+						"value": "admin@admin.fr",
+						"type": "string"
+					},
+					{
+						"key": "scope",
+						"value": "openid",
+						"type": "string"
+					},
+					{
+						"key": "clientId",
+						"value": "{{ClientId}}",
+						"type": "string"
+					},
+					{
+						"key": "accessTokenUrl",
+						"value": "{{KeycloakAPI}}/realms/conference/protocol/openid-connect/token",
+						"type": "string"
+					},
+					{
+						"key": "grant_type",
+						"value": "password_credentials",
+						"type": "string"
+					},
+					{
+						"key": "challengeAlgorithm",
+						"value": "S256",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "queryParams",
+						"type": "string"
+					},
+					{
+						"key": "client_authentication",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BankAPI",
+			"value": "http://localhost:3001",
+			"type": "default"
+		},
+		{
+			"key": "ConferenceAPI",
+			"value": "http://localhost:3000",
+			"type": "default"
+		},
+		{
+			"key": "KeycloakAPI",
+			"value": "http://localhost:8090",
+			"type": "default"
+		},
+		{
+			"key": "ClientId",
+			"value": "login-app",
+			"type": "default"
+		},
+		{
+			"key": "cardNumber_jeanbon",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "cardNumber_marcunbut",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "idConferenceML",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "idSessionOneML",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "mail_jeanbon",
+			"value": "jean@bon.fr",
+			"type": "default"
+		}
+	]
+}
