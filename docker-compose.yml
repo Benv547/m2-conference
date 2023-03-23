@@ -15,8 +15,6 @@ services:
         interval: 10s
         timeout: 5s
         retries: 5
-    volumes:
-        - ./postgres-data:/var/lib/postgresql/data
     networks:
         - conference-net
 # service name: conference
@@ -87,7 +85,8 @@ services:
     ports:
       - "3002:3000"
     volumes:
-      - ./grafana/:/var/lib/grafana
+      - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_SERVER_DOMAIN=localhost
