@@ -444,6 +444,21 @@
     "FreeOTP",
     "Google Authenticator"
   ],
+  "users": [
+    {
+      "username": "admin@admin.fr",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin"
+        }
+      ],
+      "clientRoles": {
+        "account": [ "ROLE_ADMIN" ]
+      }
+    }
+  ],
   "webAuthnPolicyRpEntityName": "keycloak",
   "webAuthnPolicySignatureAlgorithms": [
     "ES256"

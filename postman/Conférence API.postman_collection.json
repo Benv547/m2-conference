@@ -59,33 +59,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "(+) Admin ( /!\\ )",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"userName\": \"admin\",\n    \"emailId\": \"admin@admin.fr\",\n    \"password\": \"admin\",\n    \"firstname\": \"Admin\",\n    \"lastName\": \"Admin\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{ConferenceAPI}}/user",
-							"host": [
-								"{{ConferenceAPI}}"
-							],
-							"path": [
-								"user"
-							]
-						},
-						"description": "Attention, vous devez vous authentifier sur Keycloak et octroyer le role ROLE_ADMIN à cet utilisteur."
-					},
-					"response": []
 				}
 			],
 			"auth": {
