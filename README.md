@@ -73,6 +73,7 @@ Pour les routes, nous avons décidé d'**empiler les ressources** afin de pouvoi
 
 ![Route_API](images/api.png)
 
+Il est possible de lire la documentation de l'API en local en se rendant sur l'adresse suivante : [http://localhost:3000/v2/api-docs](http://localhost:3000/v2/api-docs) une fois que le projet est lancé.
 
 #### HATEOAS
 
@@ -91,6 +92,9 @@ Ce principe est également appliqué sur les **sessions** qui renvoient vers la 
 Nous avons utilisé le langage de programmation **Java** avec le framework **Spring** pour concevoir le coeur de notre application.</br>
 [![Java][Java]][Java-url]
 [![Spring][Spring.io]][Spring-url]
+
+Pour gérer la documentation de l'**API**, nous avons utilisé **Swagger**.</br>
+[![Swagger][Swagger]][Swagger-url]
 
 Pour gérer l'**authentification**, nous avons utilisé **Keycloak**.</br>
 [![Keycloak][Keycloak]][Keycloak-url]
@@ -200,6 +204,8 @@ Pour visualiser les métriques de nos services, vous pouvez lancer **Graphana** 
 [Java-url]: https://www.java.com/fr/
 [Spring.io]: https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white
 [Spring-url]: https://spring.io/
+[Swagger]: https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=white
+[Swagger-url]: https://swagger.io/
 [Keycloak]: https://img.shields.io/badge/Keycloak-000000?style=for-the-badge&logo=keycloak&logoColor=white
 [Keycloak-url]: https://www.keycloak.org/
 [PostgreSQL]: https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white
