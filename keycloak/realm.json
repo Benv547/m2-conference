@@ -454,9 +454,7 @@
           "value": "admin"
         }
       ],
-      "clientRoles": {
-        "account": [ "ROLE_ADMIN" ]
-      }
+      "realmRoles": [ "ROLE_ADMIN" ]
     }
   ],
   "webAuthnPolicyRpEntityName": "keycloak",
