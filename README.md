@@ -1,5 +1,6 @@
 <a name="readme-top"></a>
 [![Issues][issues-shield]][issues-url]
+[![Workflow][workflow-shield]][workflow-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -191,6 +192,8 @@ Pour visualiser les métriques de nos services, vous pouvez lancer **Graphana** 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
 [issues-url]: https://github.com/Benv547/m2-conference/issues
+[workflow-shield]: https://img.shields.io/github/actions/workflow/status/Benv547/m2-conference-api/maven-build-test.yml?branch=main&style=for-the-badge
+[workflow-url]: https://github.com/Benv547/m2-conference-api/actions
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/benjaminvignot
 [Java]: https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white
